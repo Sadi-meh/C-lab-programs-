@@ -1,0 +1,59 @@
+//Write a program to demonstrate file I/O operations, expressions, , as well as the use of exceptions for error handling.
+
+using System;
+using System.IO;
+
+class Program
+{
+static void Main(string[] args)
+{
+// Writing to a file
+string filePath = &quot;example.txt&quot;;
+WriteToFile(filePath);
+
+// Reading from a file
+ReadFromFile(filePath);
+}
+
+static void WriteToFile(string filePath)
+{
+try
+
+{
+// Open a file for writing (creates if not exists, overwrites if exists)
+using (StreamWriter writer = new StreamWriter(filePath))
+{
+writer.WriteLine(&quot;Hello, World!&quot;);
+writer.WriteLine(&quot;This is a file written using C#.&quot;);
+writer.WriteLine(&quot;File I/O operations are easy!&quot;);
+}
+Console.WriteLine(&quot;Data has been written to the file successfully.&quot;);
+}
+catch (Exception ex)
+{
+Console.WriteLine(&quot;An error occurred while writing to the file: &quot; + ex.Message);
+}
+}
+
+static void ReadFromFile(string filePath)
+{
+try
+{
+// Open the file for reading
+using (StreamReader reader = new StreamReader(filePath))
+{
+Console.WriteLine(&quot;Reading data from the file:&quot;);
+string line;
+while ((line = reader.ReadLine()) != null)
+{
+Console.WriteLine(line);
+}
+}
+}
+catch (Exception ex)
+{
+
+Console.WriteLine(&quot;An error occurred while reading from the file: &quot; + ex.Message);
+}
+}
+}
