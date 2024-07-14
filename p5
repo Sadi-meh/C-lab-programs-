@@ -1,0 +1,56 @@
+//Develop a program that takes user input as a sentence and performs various string operations,
+//such as counting the number of words, reversing the sentence, or converting it to title case.
+
+using System;
+
+class Program
+{
+static void Main(string[] args)
+{
+Console.WriteLine(&quot;Enter a sentence:&quot;);
+string inputSentence = Console.ReadLine();
+
+// Counting the number of words
+int wordCount = CountWords(inputSentence);
+Console.WriteLine($&quot;Number of words: {wordCount}&quot;);
+
+// Reversing the sentence
+string reversedSentence = ReverseSentence(inputSentence);
+Console.WriteLine($&quot;Reversed sentence: {reversedSentence}&quot;);
+
+// Converting the sentence to title case
+string titleCaseSentence = ToTitleCase(inputSentence);
+Console.WriteLine($&quot;Title case sentence: {titleCaseSentence}&quot;);
+}
+
+// Method to count the number of words in a sentence
+static int CountWords(string sentence)
+{
+string[] words = sentence.Split(new char[] { &#39; &#39;, &#39;\t&#39;, &#39;\n&#39; },
+StringSplitOptions.RemoveEmptyEntries);
+return words.Length;
+}
+
+// Method to reverse the words in a sentence
+static string ReverseSentence(string sentence)
+{
+string[] words = sentence.Split(new char[] { &#39; &#39;, &#39;\t&#39;, &#39;\n&#39; },
+StringSplitOptions.RemoveEmptyEntries);
+Array.Reverse(words);
+return string.Join(&quot; &quot;, words);
+}
+
+// Method to convert the sentence to title case
+static string ToTitleCase(string sentence)
+{
+
+string[] words = sentence.Split(new char[] { &#39; &#39;, &#39;\t&#39;, &#39;\n&#39; },
+StringSplitOptions.RemoveEmptyEntries);
+for (int i = 0; i &lt; words.Length; i++)
+{
+if (words[i].Length &gt; 0)
+{
+words[i] = char.ToUpper(words[i][0]) + words[i].Substring(1).ToLower();
+}
+}
+return string.Join(&quot; &quot;, words);
