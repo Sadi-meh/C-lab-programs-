@@ -1,0 +1,59 @@
+//Create a program that generates an XML document containing information about books, including
+//titles, authors, and publication years. Save this XML data to a file.
+
+using System;
+using System.Xml;
+
+class Program
+{
+static void Main(string[] args)
+{
+// Create XML document
+XmlDocument xmlDoc = new XmlDocument();
+
+// Create root element
+XmlElement root = xmlDoc.CreateElement(&quot;Books&quot;);
+xmlDoc.AppendChild(root);
+
+// Add books
+
+AddBook(xmlDoc, root, &quot;The Great Gatsby&quot;, &quot;F. Scott Fitzgerald&quot;, 1925);
+AddBook(xmlDoc, root, &quot;To Kill a Mockingbird&quot;, &quot;Harper Lee&quot;, 1960);
+AddBook(xmlDoc, root, &quot;1984&quot;, &quot;George Orwell&quot;, 1949);
+AddBook(xmlDoc, root, &quot;Pride and Prejudice&quot;, &quot;Jane Austen&quot;, 1813);
+
+// Save XML document to a file
+string fileName = &quot;books.xml&quot;;
+xmlDoc.Save(fileName);
+Console.WriteLine(&quot;XML document saved successfully.&quot;);
+
+// Print the path of the file
+string fullPath = System.IO.Path.GetFullPath(fileName);
+Console.WriteLine($&quot;File saved at: {fullPath}&quot;);
+}
+
+static void AddBook(XmlDocument xmlDoc, XmlElement root, string title, string author, int year)
+{
+// Create book element
+XmlElement bookElement = xmlDoc.CreateElement(&quot;Book&quot;);
+
+// Create title element
+XmlElement titleElement = xmlDoc.CreateElement(&quot;Title&quot;);
+titleElement.InnerText = title;
+bookElement.AppendChild(titleElement);
+
+// Create author element
+XmlElement authorElement = xmlDoc.CreateElement(&quot;Author&quot;);
+authorElement.InnerText = author;
+bookElement.AppendChild(authorElement);
+
+// Create year element
+XmlElement yearElement = xmlDoc.CreateElement(&quot;Year&quot;);
+yearElement.InnerText = year.ToString();
+
+bookElement.AppendChild(yearElement);
+
+// Append book element to root
+root.AppendChild(bookElement);
+}
+}
