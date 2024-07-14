@@ -1,0 +1,100 @@
+//Write a program to illustrate object-oriented concepts in C#.
+
+using System;
+
+namespace OOPConcepts
+{
+    // Abstraction: Creating an abstract class Animal
+    public abstract class Animal
+    {
+        // Encapsulation: Private fields
+        private string _name;
+        private int _age;
+
+        // Constructor
+        public Animal(string name, int age)
+        {
+            _name = name;
+            _age = age;
+        }
+
+        // Properties to encapsulate the fields
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
+        public int Age
+        {
+            get { return _age; }
+            set { _age = value; }
+        }
+
+        // Abstract method for polymorphism
+        public abstract void MakeSound();
+
+        // Virtual method to demonstrate polymorphism
+        public virtual void Describe()
+        {
+            Console.WriteLine($"This is {Name}, aged {Age}.");
+        }
+    }
+
+    // Inheritance: Dog class inherits from Animal
+    public class Dog : Animal
+    {
+        public Dog(string name, int age) : base(name, age) { }
+
+        // Overriding the abstract method
+        public override void MakeSound()
+        {
+            Console.WriteLine("Woof! Woof!");
+        }
+
+        // Overriding the virtual method
+        public override void Describe()
+        {
+            base.Describe();
+            Console.WriteLine("It's a dog.");
+        }
+    }
+
+    // Inheritance: Cat class inherits from Animal
+    public class Cat : Animal
+    {
+        public Cat(string name, int age) : base(name, age) { }
+
+        // Overriding the abstract method
+        public override void MakeSound()
+        {
+            Console.WriteLine("Meow! Meow!");
+        }
+
+        // Overriding the virtual method
+        public override void Describe()
+        {
+            base.Describe();
+            Console.WriteLine("It's a cat.");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Polymorphism: Animal reference can point to Dog or Cat objects
+            Animal myDog = new Dog("Buddy", 5);
+            Animal myCat = new Cat("Whiskers", 3);
+
+            // Using the polymorphic methods
+            myDog.MakeSound();
+            myDog.Describe();
+
+            myCat.MakeSound();
+            myCat.Describe();
+
+            Console.ReadLine();
+        }
+    }
+}
