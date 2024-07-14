@@ -1,0 +1,78 @@
+//Write a program demonstrates the use of primitive data types, expressions, and control
+//structures.
+
+using System;
+
+class Program
+{
+static void Main(string[] args)
+{
+// Primitive data types
+int num1 = 10;
+int num2 = 5;
+double doubleNum = 3.14;
+char character = &#39;A&#39;;
+bool isTrue = true;
+string message = &quot;Hello, world!&quot;;
+
+// Expressions
+int sum = num1 + num2;
+double product = num1 * doubleNum;
+
+// Output
+Console.WriteLine(&quot;Primitive Data Types:&quot;);
+Console.WriteLine(&quot;Integer: &quot; + num1);
+Console.WriteLine(&quot;Double: &quot; + doubleNum);
+Console.WriteLine(&quot;Character: &quot; + character);
+Console.WriteLine(&quot;Boolean: &quot; + isTrue);
+Console.WriteLine(&quot;String: &quot; + message);
+
+Console.WriteLine(&quot;\nExpressions:&quot;);
+Console.WriteLine(&quot;Sum: &quot; + sum);
+Console.WriteLine(&quot;Product: &quot; + product);
+
+// Control Structures
+Console.WriteLine(&quot;\nControl Structures:&quot;);
+
+if (num1 &gt; num2)
+{
+Console.WriteLine(num1 + &quot; is greater than &quot; + num2);
+}
+else if (num1 &lt; num2)
+{
+Console.WriteLine(num1 + &quot; is less than &quot; + num2);
+}
+else
+{
+Console.WriteLine(num1 + &quot; is equal to &quot; + num2);
+}
+
+// Loop
+Console.WriteLine(&quot;\nLoop (for):&quot;);
+for (int i = 1; i &lt;= 5; i++)
+{
+Console.WriteLine(&quot;Iteration &quot; + i);
+}
+
+// While loop
+Console.WriteLine(&quot;\nLoop (while):&quot;);
+int counter = 0;
+while (counter &lt; 5)
+{
+Console.WriteLine(&quot;Counter: &quot; + counter);
+counter++;
+}
+
+// Do-While loop
+Console.WriteLine(&quot;\nLoop (do-while):&quot;);
+int doWhileCounter = 0;
+do
+
+{
+Console.WriteLine(&quot;Do-While Counter: &quot; + doWhileCounter);
+doWhileCounter++;
+} while (doWhileCounter &lt; 5);
+
+Console.ReadLine(); // To keep the console window open
+}
+}
